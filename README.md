@@ -24,7 +24,27 @@ All of the data is fetched from the outside API and stored on an outside server.
 
 # Important Notes:
 
-- We are going to assume the user is ona bandwith constrained connection,
-- the data-loading cxperience must be near-perfect,
+- We are going to assume the user is on a bandwith constrained connection,
+- the data-loading experience must be near-perfect,
 - we are going to first look at data fetching with plain RTK, then use RTK Query
 
+# Creating db.json file
+
+- Inside of the root of the project, create a file called db.json
+- Inside of the file, create an object with a property called users, albums and photos and set them to an empty array
+
+# Installing json-server to start an API server
+
+- Inside package.json, add a new script called "start:server" and set it to json-server --watch db.json --port 3005
+
+# Running the API server
+
+- Inside the terminal (split the terminal):
+ npm run start:server
+
+ - WE can see resources available at 
+ http://localhost:3005/users, 
+ http://localhost:3005/albums, 
+ http://localhost:3005/photos
+
+ - Now we can fetch, create, retrieve, update and delete data from the API server
