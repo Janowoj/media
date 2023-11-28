@@ -48,3 +48,36 @@ All of the data is fetched from the outside API and stored on an outside server.
  http://localhost:3005/photos
 
  - Now we can fetch, create, retrieve, update and delete data from the API server
+
+ # Inside compontents folder added:
+
+ - Button.js
+ - Panel.js
+ - UsersList.js
+
+ # Inside src directory added:
+
+ - store folder
+    - slices folder
+        - usersSlice.js
+
+// userSlices is a slice of state that is going to be responsible for FETCHING the list of users from the API server and STORING it inside of the Redux store.
+
+// We are going to use the createSlice function from Redux Toolkit to create a slice of state.
+
+# Insice the store added index.js file
+
+// Inside this file we are going to create a Redux store and export it.
+
+// This a central EXPORT POINT for everything related to the Redux store.
+
+// Inside the index.js in the store folder we are going to import the configureStore function from Redux Toolkit and the usersReducers from the usersSlice.js file.
+
+# React-Redux installation
+
+// Inside the terminal:
+npm install react-redux
+
+# inside the index.js file in the src folder
+
+// We are going to import the Provider component from React-Redux and the store from the store folder.
