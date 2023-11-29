@@ -141,3 +141,13 @@ more flexible to change the structure of the data.
 In React-Redux we are going to use Normalized Form (often).
 
 Our API server may not return the data in the Normalized Form, so we are going to have to transform it.
+
+## Options for Data Fetching in Redux Toolkit:
+
+- Async Thunk Functions
+We will use this to handle users
+
+- RTK Query
+We will use this to handle albums and photos
+
+Usually we are not going to use both of them in the same application. Here we will use the both to understand the differences.
