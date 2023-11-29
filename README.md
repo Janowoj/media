@@ -151,3 +151,57 @@ We will use this to handle users
 We will use this to handle albums and photos
 
 Usually we are not going to use both of them in the same application. Here we will use the both to understand the differences.
+
+## Where to put the data fetching logic?
+
+The flow of component is:
+
+- user does something
+- we are going to dispatch an action
+- the action is going to be handled by a reducer
+- the reducer is going to update the state
+- the component is going to re-render
+
+## Don't make requests inside of the reducer!
+
+Why?
+
+- Reducers must be 100% synchronous
+- reducers should only operate on their arguments - no outside variables!
+
+## Adding state for data loading
+
+We need to add in some STATE to our application to keep track of whether we should SHOW A LOADING indicator or not, LIST OF USERS or an ERROR message:
+
+isLoading (boolean),
+data (array of objects), 
+error (null or error object)
+
+## Start the request:
+
+{
+    isLoading: true,
+    data: [],
+    error: null
+}
+
+## Request successful:
+
+{
+    isLoading: false,
+    data: [{ id: 1, name: 'John Doe'}],
+    error: null
+}
+
+## Request failed:
+
+{
+    isLoading: false,
+    data: [],
+    error: { message: 'Error message'}
+}
+
+This means, that we need two separate actions to be dispatched:
+
+- one when the request is successful
+- one when the request fails
