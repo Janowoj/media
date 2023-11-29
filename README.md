@@ -28,6 +28,8 @@ All of the data is fetched from the outside API and stored on an outside server.
 - the data-loading experience must be near-perfect,
 - we are going to first look at data fetching with plain RTK, then use RTK Query
 
+# SETUP:
+
 # Creating db.json file
 
 - Inside of the root of the project, create a file called db.json
@@ -65,7 +67,7 @@ All of the data is fetched from the outside API and stored on an outside server.
 
 // We are going to use the createSlice function from Redux Toolkit to create a slice of state.
 
-# Insice the store added index.js file
+# Inside the store added index.js file
 
 // Inside this file we are going to create a Redux store and export it.
 
@@ -81,3 +83,61 @@ npm install react-redux
 # inside the index.js file in the src folder
 
 // We are going to import the Provider component from React-Redux and the store from the store folder.
+
+// We are going to wrap the App component with the Provider component and pass the store as a prop.
+
+// ----------------------------------------------
+
+## Storing a data:
+
+// Denormalized Form:
+
+[
+    {
+        id: 1,
+        name: 'John Doe',
+        albums: [
+            { id: 1, title: 'My Summer Vacation'},
+            { id: 2, title: 'My Winter Vacation'}
+        ]
+    },
+    {
+        id: 2,
+        name: 'Jane Doe',
+        albums: [
+            { id: 3, title: 'My Summer Vacation'},
+            { id: 4, title: 'My Winter Vacation'}
+        ]
+    }
+]
+
+// Normalized Form:
+
+List of Albums:
+
+[
+    { id: 1, title: 'My Summer Vacation', userId: 50},
+    { id: 2, title: 'My Winter Vacation', userId: 50},
+    { id: 3, title: 'My Summer Vacation', userId: 63},
+    { id: 4, title: 'My Winter Vacation', userId: 63}
+]
+
+List of Users:
+
+[
+    { id: 50, name: 'John Doe'},
+    { id: 63, name: 'Jane Doe'}
+]
+
+function getAlbumsForUser(user, albums) {
+    return albums.filter(album => ablum.userId === user.id);
+}
+
+## If structure of data doesn't really match the UI, we should use Normalized Form!
+
+It is easier to update the data in the Normalized Form and
+more flexible to change the structure of the data.
+
+In React-Redux we are going to use Normalized Form (often).
+
+Our API server may not return the data in the Normalized Form, so we are going to have to transform it.
