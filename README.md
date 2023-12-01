@@ -201,7 +201,5 @@ error (null or error object)
     error: { message: 'Error message'}
 }
 
-This means, that we need two separate actions to be dispatched:
+This means, that we need multiple separate actions to be dispatched.
 
-- one when the request is successful
-- one when the request fails
