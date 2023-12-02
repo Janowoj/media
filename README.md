@@ -203,3 +203,53 @@ error (null or error object)
 
 This means, that we need multiple separate actions to be dispatched.
 
+# Async Thunk Function
+
+When we start a request, the Async Thunk Function is going to dispatch an action with the type of 'users/fetchUsers/pending' during the data loading process. Then it is going to set off to all of the reducers that are interested in that action.
+
+We are going to configure the usersSlice.js file to handle that action. When it sees that action, it is going to update the state to set isLoading to true.
+
+// success
+
+After we get the data back from the API server, the Async Thunk Function is going to dispatch a second action with the type of 'users/fetchUsers/fulfilled'. It is going to flow into all of our reducers. We are going to set up another custom reducer inside of the usersSlice.js file to handle that action. When it sees that action, it is going to update the state to set isLoading to false and set the data to the data that we got back from the API server.
+
+// error
+
+The first part is the same as the success part. The Async Thunk Function is going to dispatch an action with the type of 'users/fetchUsers/rejected'. It is going to flow into all of our reducers. We are going to set up another custom reducer inside of the usersSlice.js file to handle that action. When it sees that action, it is going to update the state to set isLoading to false and set the error to the error that we got back from the API server.
+
+## Fetching data with Async Thunk Function
+
+// inside the db.json file we created users list;
+
+## Creating Async Thunk Function
+
+// the GOAL of this THUNK is to FETCH some DATA and automatically have some ACTIONS DISPATCHED for us as we are FETCHING the DATA.
+
+1. Create a NEW FILE for YOUR THUNK. Name it after the purpose of the request.
+2. Create the THUNK. Give it a base type that describes the purpose of the request
+
+// inside the store folder adde thunks folder and inside it added fetchUsers.js file
+
+// inside the fetchUsers.js file we are going to import the createAsyncThunk function from Redux Toolkit and axios library.
+
+// We are going to create a new THUNK using the createAsyncThunk function. We are going to give it a base type of 'users/fetch' (we can put any string that we want).
+
+// When we initally make our request the action type is going to be 'users/fetch/pending'.
+
+// The same THUNK is going to dispatch a second action with the type of 'users/fetch/fulfilled' when the request is successful.
+
+// The same THUNK is going to dispatch a third action with the type of 'users/fetch/rejected' when the request is failed.
+
+3. In the thunk, make the REQUEST, RETURN THE DATA that you want to use in your reducer
+
+const fetchUsers = createAsyncThunk('users/fetch', async () => {
+    const response = await axios.get('http://localhost:3005/users');
+
+ return response.data;
+});
+
+// We are going to make a request to the API server using axios library. We are going to get the list of users from the API server.
+
+// Inside response.data we have the list of users.
+
+4. In the SLICE, add extraReducers, watching for the action types that the thunk will dispatch
