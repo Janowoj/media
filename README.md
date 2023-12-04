@@ -285,3 +285,28 @@ extraReducers (builder) {
             state.isLoading = true;
         });
     }
+
+// Whatever we return from fetchUsers, it is going to be available as action.payload inside of the reducer:
+
+extraReducers (builder) {
+        builder.addCase(fetchUsers.pending, (state, action) => {
+            state.isLoading = true;
+        });
+        builder.addCase(fetchUsers.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.data = action.payload;
+        });
+    };
+
+5. Export the thunk from the store/index.js file
+6. When a user does something, dispatch the thunk from the component to run the request 
+
+// When users list is first displayed, we dispatch out thunk and run data loading process. This means we need useEffect hook.
+
+// We need to put EMPTY ARRAY as a second argument to useEffect hook to run the data loading process ONLY ONCE.
+
+// To make the warning from ESLint go away we can put dispatch inside the empty array.
+
+// To check if the data is really fetched we can check in the console NETWORK tab, Fetch/XHR and reload the page. In the Preview tab we can see the list of users.
+
+// Remember to run both servers: npm run start:server and npm start 
