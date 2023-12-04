@@ -309,4 +309,19 @@ extraReducers (builder) {
 
 // To check if the data is really fetched we can check in the console NETWORK tab, Fetch/XHR and reload the page. In the Preview tab we can see the list of users.
 
-// Remember to run both servers: npm run start:server and npm start 
+// Remember to run both servers: npm run start:server and npm start
+
+# Displaying the list of users
+
+// Inside usersList we are going to import the useSelector hook from React-Redux and the fetchUsers thunk from the store folder.
+
+// We are going to use the useSelector hook to get the list of users from the Redux store.
+
+// We are going to use destructuring to get the list of users from the state:
+
+const {data, isLoading, error} = useSelector(state => state.users);
+
+// Then using useEffect hook we are going to display the number of users using users.length inside curly braces (in case testing)
+
+// Tp get an error message we can change the URL in the fetchUsers.js file to e.g.:
+http://localhost:3005/userss
