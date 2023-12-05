@@ -325,3 +325,16 @@ const {data, isLoading, error} = useSelector(state => state.users);
 
 // Tp get an error message we can change the URL in the fetchUsers.js file to e.g.:
 http://localhost:3005/userss
+
+## Making a pause for testing
+
+// We can make a pause for testing by adding a promise to the fetchUsers.js file
+
+
+## Creating skeleton loader
+
+// We are going to use the set of grey boxes to show the user that something is loading.
+
+// To do this we can use for loop and create an array of 'times' elements.
+
+// Better way is to use the Array().fill().map() method.
