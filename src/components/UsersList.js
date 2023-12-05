@@ -18,12 +18,8 @@ function UsersList() {
             // BAD! DO NOT DO THIS! DISPATCH IS NOT A DEPENDENCY! IS ASYNC!
             // setIsLoadingUsers(false);
             .unwrap()
-            .then(() => {
-                console.log('fetchUsers thunk completed!');
-            })
-            .catch(() => {
-                console.log('fetchUsers thunk failed!');
-            });
+            .catch((err) => setLoadingUsersError(err))
+            .finally(() => setIsLoadingUsers(false));
     }, [dispatch]);
 
     const handleUserAdd = () => {

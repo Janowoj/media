@@ -434,3 +434,7 @@ useEffect(() => {
                 console.log('fetchUsers thunk failed!');
             });
     }, [dispatch]);
+
+// we can use .finally() method to set the isLoadingUsers to false
+
+// NOW we can KEEP TRACK whether we are LOADING DATA AND whether or not there was an ERROR.
