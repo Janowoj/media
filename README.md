@@ -400,4 +400,37 @@ To do this we will use a THUNK.
 
 // Generally two options for implementation
 
-// The RTK Wuery module that we will use in a little a bit handles this for us automatically.
+// The RTK Query module that we will use in a little a bit handles this for us automatically.
+
+# Option 1: move all LOADING and ERROR state TO COMPONENTS
+
+ADVANTAGES:
+
+- this may be a useful technique in some corner cases
+- tedious to implement, so we need to create a custom hook to handle this
+- usefull to better understand async thunks
+- you might have to work on a project that uses this technique
+
+## When calling the dispatch function, we receive a PROMISE back, but the rules are different than the normal promise rules.
+
+// In dispatch function the promise's .then() method is going to be called when the request is successful OR when the request is failed!
+
+// Argument to the .then() is fulfilled or rejected ACTION OBJECT.
+
+# We can use .unwrap() method to get the rpomise back following the conventional promise rules.
+
+... so the useEffect hook is going to look like this:
+
+useEffect(() => {
+        setIsLoadingUsers(true);
+        dispatch(fetchUsers())
+            // BAD! DO NOT DO THIS! DISPATCH IS NOT A DEPENDENCY! IS ASYNC!
+            // setIsLoadingUsers(false);
+            .unwrap()
+            .then(() => {
+                console.log('fetchUsers thunk completed!');
+            })
+            .catch(() => {
+                console.log('fetchUsers thunk failed!');
+            });
+    }, [dispatch]);
