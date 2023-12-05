@@ -299,7 +299,7 @@ extraReducers (builder) {
     };
 
 5. Export the thunk from the store/index.js file
-6. When a user does something, dispatch the thunk from the component to run the request 
+6. Inside UsersList.js: When a user does something, dispatch the thunk from the component to run the request 
 
 // When users list is first displayed, we dispatch out thunk and run data loading process. This means we need useEffect hook.
 
@@ -337,4 +337,54 @@ http://localhost:3005/userss
 
 // To do this we can use for loop and create an array of 'times' elements.
 
+   const boxes = [];
+    for (let i = 0; i < times; i++) {
+        boxes.push(
+            <div key={i}>Box</div>
+        )
+    }
+    return boxes;
+
 // Better way is to use the Array().fill().map() method.
+
+## Creating shimmer effect:
+
+Goal:
+
+// We are going to use the CSS property called background-image and linear-gradient() function.
+
+// Basically there are two elements, that are overlapping each other. The first one is the grey box and the second one has a gradient background.
+
+// Initially the second element is not visible, but when we add the animation, the second element is going to move to the right and the first element is going to be hidden.
+
+Skeleton.js file:
+
+// We are going to create a new component called Skeleton.js
+
+// Adding variables outerClassNames and innerClassNames to the Skeleton component with many classes.
+
+usersList.js file:
+
+// We are going to import the Skeleton component to the usersList.js file.
+
+// We are going to use the Skeleton component to display the list of users.
+
+## Adding user button
+
+// Whenever users click on the button, we are going to make a POST request to the API server to create a new user.
+
+// In th BODY of the request we are going to have an object with a name property randomly generated.
+
+// We will use Faker.js library to generate random data.
+
+// After sending the request to the API server, we are going to get back the new user object with an id property created by the API server.
+
+// We are going to ADD the new user object to the list of users in the Redux store.
+
+To do this we will use a THUNK.
+
+## Creating a new THUNK
+
+// It is going to have a type of 'users/add'.
+
+// Whenever we start the request, the THUNK is going to dispatch an action with the type of 'users/add/pending'.

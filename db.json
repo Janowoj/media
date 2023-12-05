@@ -1,10 +1,62 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "name": "Jan"
-        }
-    ],
-    "albums": [],
-    "photos": []
+  "users": [
+    {
+      "id": 1,
+      "name": "Jan"
+    },
+    {
+      "name": "Ellis Vandervort",
+      "id": 2
+    },
+    {
+      "name": "Karla Keebler",
+      "id": 3
+    },
+    {
+      "name": "Daniel Kiehn-Pfeffer",
+      "id": 4
+    },
+    {
+      "name": "Ms. Olga Swaniawski",
+      "id": 5
+    },
+    {
+      "name": "Aaron Lowe",
+      "id": 6
+    },
+    {
+      "name": "Jesse Bosco",
+      "id": 7
+    },
+    {
+      "name": "Reginald Schmeler",
+      "id": 8
+    },
+    {
+      "name": "Elaine Gusikowski",
+      "id": 9
+    },
+    {
+      "name": "Dr. Beatrice Nikolaus Sr.",
+      "id": 10
+    },
+    {
+      "name": "Mr. Andrew Bergstrom",
+      "id": 11
+    },
+    {
+      "name": "Joe Little",
+      "id": 12
+    },
+    {
+      "name": "Bill Kulas",
+      "id": 13
+    },
+    {
+      "name": "Courtney Trantow",
+      "id": 14
+    }
+  ],
+  "albums": [],
+  "photos": []
 }
