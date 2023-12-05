@@ -388,3 +388,16 @@ To do this we will use a THUNK.
 // It is going to have a type of 'users/add'.
 
 // Whenever we start the request, the THUNK is going to dispatch an action with the type of 'users/add/pending'.
+
+## Managing loading state
+
+// We want to show the loading indicator when we are making the request inside of the BUTTON.
+
+
+# 'Fine-Grained' loading state
+
+// Maintaining separate state variables for each request.
+
+// Generally two options for implementation
+
+// The RTK Wuery module that we will use in a little a bit handles this for us automatically.
