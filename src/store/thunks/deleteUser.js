@@ -4,7 +4,7 @@ import axios from 'axios';
 const deleteUser = createAsyncThunk('users/delete', async (user) => {
     const response = await axios.delete(`http://localhost:3005/users/${user.id}`);
 
-    // dev only!!!
+    // fix it!
     return response.data;
 });
 
