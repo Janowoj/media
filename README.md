@@ -417,7 +417,7 @@ ADVANTAGES:
 
 // Argument to the .then() is fulfilled or rejected ACTION OBJECT.
 
-# We can use .unwrap() method to get the rpomise back following the conventional promise rules.
+# We can use .unwrap() method to get the promise back following the conventional promise rules.
 
 ... so the useEffect hook is going to look like this:
 
@@ -438,3 +438,11 @@ useEffect(() => {
 // we can use .finally() method to set the isLoadingUsers to false
 
 // NOW we can KEEP TRACK whether we are LOADING DATA AND whether or not there was an ERROR.
+
+### Deleting a user
+
+// We are going to make a DELETE request to the API server to delete a user, e.g.:
+
+http://localhost:3005/users/1
+
+// We are going to use async thunks function to handle this.
