@@ -446,3 +446,21 @@ useEffect(() => {
 http://localhost:3005/users/1
 
 // We are going to use async thunks function to handle this.
+
+// When we are going to create a thunk, we are going to get an action with a base type of:
+ 'users/delete/pending'
+ 'users/delete/fulfilled' 
+
+ # Created UsersListitem.js file
+
+ // We are going to create a new component called UsersListItem.js
+
+// We are going to use the UsersListItem component to display the list of users.
+
+# Deleting problem in the usersSlice.js file
+
+// How do we know which user to delete?
+
+// When we conn=sole.log(action) we can see that action payload property is an EMPTY object.
+
+// We don't have information about WHAT USER we want to delete.
