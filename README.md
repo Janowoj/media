@@ -464,3 +464,34 @@ http://localhost:3005/users/1
 // When we conn=sole.log(action) we can see that action payload property is an EMPTY object.
 
 // We don't have information about WHAT USER we want to delete.
+
+// ...so inside the deleteUser thunk we have to return the USER.
+
+// We cannot return response.data because we don't have access to the response object.
+
+### Creating albums
+
+// by clicking on the user we are going to make a GET request to the API server to fetch a new album assoiated WITH THAT USER.
+
+// We are going to expand the user by clicking on the arrow (OR PANEL) and show the list of 2 albums.
+
+// These TWO ALBUMS will have user IDs equal to the ID of the USER that we clicked on, e.g.:
+
+// Next to the album title we are going to have a button to delete the album and the arrow to expand the album and show the list of photos.
+
+// WE are going to create also a button to add a new album.
+
+// It is important to add QUERY PARAMETERS to the URL to fetch the list of albums for a specific user!
+
+fetching:
+// GET http://localhost:3005/albums?userId=1
+
+creating:
+// POST http://localhost:3005/albums
+
+We have to provide the user ID and title in the body of the request.
+
+deleting:
+// DELETE http://localhost:3005/albums/1
+
+### JSON server will give us back the ID of the album that we created.
