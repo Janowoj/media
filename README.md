@@ -495,3 +495,54 @@ deleting:
 // DELETE http://localhost:3005/albums/1
 
 ### JSON server will give us back the ID of the album that we created.
+
+#### Hierarchy of components:
+
+App.js
+    UsersList.js
+        UsersListItem.js
+            ExpandblePanel.js
+                AlbumsList.js
+                    AlbumListItem.js
+                        ExpandablePanel.js
+                            PhotosList.js
+                                PhotoListItem.js
+
+# ExpandablePanel.js file
+
+// ExpandablePanel component is going to receive TWO PROPS:
+
+'header' providing the button element and the user's name
+
+'children' providing the list of albums
+
+// By clicking on the HEADER we are going to expand the panel and show the list of albums.
+
+// It will look like this:
+
+const header = (
+    <div>
+        <Button>Delete User</Button>
+        <div>Janet</div>
+    </div>
+    );
+
+<ExpandablePanel header={header}>
+<h1>Albums by Janet</h1>
+<div>
+    Album #1
+    Album #2
+</div>
+</ExpandablePanel>
+
+# How to keep track of which these panels shold be rendered as 'open'?
+
+// Two options:
+
+worse:
+// We can add a NEW STATE to our Redux store, which could KEEP TRACK of ALL of the panels that should be open based on the user ID.
+
+// This is not a good idea, because we are reusing the ExpandablePanel component in multiple places.
+The user and an album might have THE SAME ID.
+
+// Then we could don't know, whether we should render the ALBUM panel or USER panel as 'open'.
