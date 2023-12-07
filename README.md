@@ -546,3 +546,16 @@ worse:
 The user and an album might have THE SAME ID.
 
 // Then we could don't know, whether we should render the ALBUM panel or USER panel as 'open'.
+
+BETTER:
+// Application level state is not the best place to keep track of this. This is state that many components care about (best stored in Redux).
+
+// Component level state is the best place to keep track of this. This is state that only one component cares about (best stored in React component).
+
+// We are going to add a NEW STATE to the ExpandablePanel component to keep track of whether or not the panel should be 'open'.
+
+// We care about detecting when the ExpandablePanel gets opened or closed.
+
+# Adding JSX fragment to the ExpandablePanel.js file
+
+// We are going to add a JSX fragment to the ExpandablePanel.js file to render the header and the children (not loosing the styling by adding the div element).
