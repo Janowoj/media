@@ -559,3 +559,12 @@ BETTER:
 # Adding JSX fragment to the ExpandablePanel.js file
 
 // We are going to add a JSX fragment to the ExpandablePanel.js file to render the header and the children (not loosing the styling by adding the div element).
+
+### AlbumsList.js file
+
+// We are going to create a new component called AlbumsList.js with user prop.
+
+// We are going to use the AlbumsList component to display the list of albums.
+
+// We want to display the list of albums inside of the UsersListItem component, because it is responsible for displaying one individual user.
+
