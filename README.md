@@ -42,26 +42,26 @@ All of the data is fetched from the outside API and stored on an outside server.
 # Running the API server
 
 - Inside the terminal (split the terminal):
- npm run start:server
+  npm run start:server
 
- - WE can see resources available at 
- http://localhost:3005/users, 
- http://localhost:3005/albums, 
- http://localhost:3005/photos
+- WE can see resources available at
+  http://localhost:3005/users,
+  http://localhost:3005/albums,
+  http://localhost:3005/photos
 
- - Now we can fetch, create, retrieve, update and delete data from the API server
+- Now we can fetch, create, retrieve, update and delete data from the API server
 
- # Inside compontents folder added:
+# Inside compontents folder added:
 
- - Button.js
- - Panel.js
- - UsersList.js
+- Button.js
+- Panel.js
+- UsersList.js
 
- # Inside src directory added:
+# Inside src directory added:
 
- - store folder
-    - slices folder
-        - usersSlice.js
+- store folder
+  - slices folder
+    - usersSlice.js
 
 // userSlices is a slice of state that is going to be responsible for FETCHING the list of users from the API server and STORING it inside of the Redux store.
 
@@ -93,22 +93,22 @@ npm install react-redux
 // Denormalized Form:
 
 [
-    {
-        id: 1,
-        name: 'John Doe',
-        albums: [
-            { id: 1, title: 'My Summer Vacation'},
-            { id: 2, title: 'My Winter Vacation'}
-        ]
-    },
-    {
-        id: 2,
-        name: 'Jane Doe',
-        albums: [
-            { id: 3, title: 'My Summer Vacation'},
-            { id: 4, title: 'My Winter Vacation'}
-        ]
-    }
+{
+id: 1,
+name: 'John Doe',
+albums: [
+{ id: 1, title: 'My Summer Vacation'},
+{ id: 2, title: 'My Winter Vacation'}
+]
+},
+{
+id: 2,
+name: 'Jane Doe',
+albums: [
+{ id: 3, title: 'My Summer Vacation'},
+{ id: 4, title: 'My Winter Vacation'}
+]
+}
 ]
 
 // Normalized Form:
@@ -116,21 +116,21 @@ npm install react-redux
 List of Albums:
 
 [
-    { id: 1, title: 'My Summer Vacation', userId: 50},
-    { id: 2, title: 'My Winter Vacation', userId: 50},
-    { id: 3, title: 'My Summer Vacation', userId: 63},
-    { id: 4, title: 'My Winter Vacation', userId: 63}
+{ id: 1, title: 'My Summer Vacation', userId: 50},
+{ id: 2, title: 'My Winter Vacation', userId: 50},
+{ id: 3, title: 'My Summer Vacation', userId: 63},
+{ id: 4, title: 'My Winter Vacation', userId: 63}
 ]
 
 List of Users:
 
 [
-    { id: 50, name: 'John Doe'},
-    { id: 63, name: 'Jane Doe'}
+{ id: 50, name: 'John Doe'},
+{ id: 63, name: 'Jane Doe'}
 ]
 
 function getAlbumsForUser(user, albums) {
-    return albums.filter(album => ablum.userId === user.id);
+return albums.filter(album => ablum.userId === user.id);
 }
 
 ## If structure of data doesn't really match the UI, we should use Normalized Form!
@@ -145,10 +145,10 @@ Our API server may not return the data in the Normalized Form, so we are going t
 ## Options for Data Fetching in Redux Toolkit:
 
 - Async Thunk Functions
-We will use this to handle users
+  We will use this to handle users
 
 - RTK Query
-We will use this to handle albums and photos
+  We will use this to handle albums and photos
 
 Usually we are not going to use both of them in the same application. Here we will use the both to understand the differences.
 
@@ -174,31 +174,31 @@ Why?
 We need to add in some STATE to our application to keep track of whether we should SHOW A LOADING indicator or not, LIST OF USERS or an ERROR message:
 
 isLoading (boolean),
-data (array of objects), 
+data (array of objects),
 error (null or error object)
 
 ## Start the request:
 
 {
-    isLoading: true,
-    data: [],
-    error: null
+isLoading: true,
+data: [],
+error: null
 }
 
 ## Request successful:
 
 {
-    isLoading: false,
-    data: [{ id: 1, name: 'John Doe'}],
-    error: null
+isLoading: false,
+data: [{ id: 1, name: 'John Doe'}],
+error: null
 }
 
 ## Request failed:
 
 {
-    isLoading: false,
-    data: [],
-    error: { message: 'Error message'}
+isLoading: false,
+data: [],
+error: { message: 'Error message'}
 }
 
 This means, that we need multiple separate actions to be dispatched.
@@ -243,9 +243,9 @@ The first part is the same as the success part. The Async Thunk Function is goin
 3. In the thunk, make the REQUEST, RETURN THE DATA that you want to use in your reducer
 
 const fetchUsers = createAsyncThunk('users/fetch', async () => {
-    const response = await axios.get('http://localhost:3005/users');
+const response = await axios.get('http://localhost:3005/users');
 
- return response.data;
+return response.data;
 });
 
 // We are going to make a request to the API server using axios library. We are going to get the list of users from the API server.
@@ -259,18 +259,18 @@ const fetchUsers = createAsyncThunk('users/fetch', async () => {
 // We don't need to add the 'users/fetch/pending' action type because it is going to be handled automatically by the createAsyncThunk function:
 
 extraReducers (builder) {
-        builder.addCase('users/fetch/pending');
-        builder.addCase();
-        builder.addCase();
-    }
+builder.addCase('users/fetch/pending');
+builder.addCase();
+builder.addCase();
+}
 
 // instead of 'users/fetch/pending' we can use fetchUsers.pending:
 
 extraReducers (builder) {
-        builder.addCase(fetchUsers.pending);
-        builder.addCase();
-        builder.addCase();
-    }
+builder.addCase(fetchUsers.pending);
+builder.addCase();
+builder.addCase();
+}
 
 // Huge part of Redux Toolkit is that we don't have to write the action types BY HAND. We can use VARIABLE with properties automatically generated by the createAsyncThunk function:
 
@@ -281,25 +281,25 @@ fetchUsers.rejected === 'users/fetch/rejected'
 // Now we can make an UPDATE to the STATE object inside of the reducer and optionally return a NEW STATE object (we can use the IMMER library to make the update to the state object easier):
 
 extraReducers (builder) {
-        builder.addCase(fetchUsers.pending, (state, action) => {
-            state.isLoading = true;
-        });
-    }
+builder.addCase(fetchUsers.pending, (state, action) => {
+state.isLoading = true;
+});
+}
 
 // Whatever we return from fetchUsers, it is going to be available as action.payload inside of the reducer:
 
 extraReducers (builder) {
-        builder.addCase(fetchUsers.pending, (state, action) => {
-            state.isLoading = true;
-        });
-        builder.addCase(fetchUsers.fulfilled, (state, action) => {
-            state.isLoading = false;
-            state.data = action.payload;
-        });
-    };
+builder.addCase(fetchUsers.pending, (state, action) => {
+state.isLoading = true;
+});
+builder.addCase(fetchUsers.fulfilled, (state, action) => {
+state.isLoading = false;
+state.data = action.payload;
+});
+};
 
 5. Export the thunk from the store/index.js file
-6. Inside UsersList.js: When a user does something, dispatch the thunk from the component to run the request 
+6. Inside UsersList.js: When a user does something, dispatch the thunk from the component to run the request
 
 // When users list is first displayed, we dispatch out thunk and run data loading process. This means we need useEffect hook.
 
@@ -330,20 +330,20 @@ http://localhost:3005/userss
 
 // We can make a pause for testing by adding a promise to the fetchUsers.js file
 
-
 ## Creating skeleton loader
 
 // We are going to use the set of grey boxes to show the user that something is loading.
 
 // To do this we can use for loop and create an array of 'times' elements.
 
-   const boxes = [];
-    for (let i = 0; i < times; i++) {
-        boxes.push(
-            <div key={i}>Box</div>
-        )
-    }
-    return boxes;
+const boxes = [];
+for (let i = 0; i < times; i++) {
+boxes.push(
+
+<div key={i}>Box</div>
+)
+}
+return boxes;
 
 // Better way is to use the Array().fill().map() method.
 
@@ -393,7 +393,6 @@ To do this we will use a THUNK.
 
 // We want to show the loading indicator when we are making the request inside of the BUTTON.
 
-
 # 'Fine-Grained' loading state
 
 // Maintaining separate state variables for each request.
@@ -422,18 +421,18 @@ ADVANTAGES:
 ... so the useEffect hook is going to look like this:
 
 useEffect(() => {
-        setIsLoadingUsers(true);
-        dispatch(fetchUsers())
-            // BAD! DO NOT DO THIS! DISPATCH IS NOT A DEPENDENCY! IS ASYNC!
-            // setIsLoadingUsers(false);
-            .unwrap()
-            .then(() => {
-                console.log('fetchUsers thunk completed!');
-            })
-            .catch(() => {
-                console.log('fetchUsers thunk failed!');
-            });
-    }, [dispatch]);
+setIsLoadingUsers(true);
+dispatch(fetchUsers())
+// BAD! DO NOT DO THIS! DISPATCH IS NOT A DEPENDENCY! IS ASYNC!
+// setIsLoadingUsers(false);
+.unwrap()
+.then(() => {
+console.log('fetchUsers thunk completed!');
+})
+.catch(() => {
+console.log('fetchUsers thunk failed!');
+});
+}, [dispatch]);
 
 // we can use .finally() method to set the isLoadingUsers to false
 
@@ -448,12 +447,12 @@ http://localhost:3005/users/1
 // We are going to use async thunks function to handle this.
 
 // When we are going to create a thunk, we are going to get an action with a base type of:
- 'users/delete/pending'
- 'users/delete/fulfilled' 
+'users/delete/pending'
+'users/delete/fulfilled'
 
- # Created UsersListitem.js file
+# Created UsersListitem.js file
 
- // We are going to create a new component called UsersListItem.js
+// We are going to create a new component called UsersListItem.js
 
 // We are going to use the UsersListItem component to display the list of users.
 
@@ -499,14 +498,14 @@ deleting:
 #### Hierarchy of components:
 
 App.js
-    UsersList.js
-        UsersListItem.js
-            ExpandblePanel.js
-                AlbumsList.js
-                    AlbumListItem.js
-                        ExpandablePanel.js
-                            PhotosList.js
-                                PhotoListItem.js
+UsersList.js
+UsersListItem.js
+ExpandblePanel.js
+AlbumsList.js
+AlbumListItem.js
+ExpandablePanel.js
+PhotosList.js
+PhotoListItem.js
 
 # ExpandablePanel.js file
 
@@ -521,11 +520,12 @@ App.js
 // It will look like this:
 
 const header = (
-    <div>
-        <Button>Delete User</Button>
-        <div>Janet</div>
-    </div>
-    );
+
+<div>
+<Button>Delete User</Button>
+<div>Janet</div>
+</div>
+);
 
 <ExpandablePanel header={header}>
 <h1>Albums by Janet</h1>
@@ -598,13 +598,13 @@ createApi() function:
 // This is going to discribe all of the different kinds of requests that we can make to the API server (here fetchAlbums, addAlbum, deleteAlbum).
 
 const albumsAPI = createApi({
-    endpoints(builder) {
-        return {
-            fetchAlbums: // some code to make a request to the API server
-            addAlbum: // some code to make a request to the API server
-            deleteAlbum: // some code to make a request to the API server
-        }
-    }
+endpoints(builder) {
+return {
+fetchAlbums: // some code to make a request to the API server
+addAlbum: // some code to make a request to the API server
+deleteAlbum: // some code to make a request to the API server
+}
+}
 });
 
 // keys: fetchAblums, addAlbum, deleteAlbum are going to be the names of the hooks that we are going to use to make requests to the API server.
@@ -626,15 +626,60 @@ They have AUTOGENERATED names!
 // We are going to use them inside of the components.
 
 function AlbumsList({user}) {
-    const {data, isLoading, error} = useFetchAlbumsQuery(user.id);
+const {data, isLoading, error} = useFetchAlbumsQuery(user.id);
 
 return (
-        <div>
-            Albums List
-        </div>
-    )
+
+<div>
+Albums List
+</div>
+)
 }
 
+# REDUX TOOLKIT QUERY:
 
+- handles tons of CORNER CASES,
+  (almost all aspects of making requests)
 
+- fine-grained loading state
+- fine-grained error state
+- data caching and refetching
 
+# Creating a RTK Query API
+
+1. Identify a group of related requests that your app needs to make
+2. Make a new file that will create the API
+3. The API needs to store a ton of state related to data, request status, errors. Add a 'reducerPath' property to the API object to tell RTK Query where to store that state in the Redux store
+4. The API needs to know how and where to send requests. Add a 'baseQuery' property.
+5. Add 'endpoints' one of each kind of request you want to make. Reqs that read data are called 'queries'. Reqs that create, update or delete data are called 'mutations'.
+
+6. Identify a group of related requests that your app needs to make
+   requests ralated to users: UsersAPI
+
+- fetchUsers
+- addUser
+- deleteUser
+
+requests related to albums: AlbumsAPI
+
+- fetchAlbums
+- addAlbum
+- deleteAlbum
+
+requests related to photos: PhotosAPI
+
+- fetchPhotos
+- addPhoto
+- deletePhoto
+
+Remember! While working with RTK QUERY the term API does not mean an API server. It is just a front-end side (React) FUNCTION that provides an INTERFACE to make requests to the API server.
+
+On this project we are not gong to make UsersAPI, because we already implemented it using ASYNC THUNK Function.
+
+2.  import {createApi} from '@reduxjs/toolkit/query/react';
+
+const albumsApi = createApi({
+
+});
+
+3.  When we create an API, it is going to automatically create a SLICE of state for us.
