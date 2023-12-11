@@ -653,8 +653,7 @@ Albums List
 4. The API needs to know how and where to send requests. Add a 'baseQuery' property.
 5. Add 'endpoints' one of each kind of request you want to make. Reqs that read data are called 'queries'. Reqs that create, update or delete data are called 'mutations'.
 
-6. Identify a group of related requests that your app needs to make
-   requests ralated to users: UsersAPI
+6. Identify a group of related requests that your app needs to make requests ralated to users: UsersAPI
 
 - fetchUsers
 - addUser
@@ -682,4 +681,30 @@ const albumsApi = createApi({
 
 });
 
-3.  When we create an API, it is going to automatically create a SLICE of state for us.
+3.  When we create an API, it is going to automatically create a SLICE of state for us. This silce is used to store a ton of state related to data, request status, errors. We use 'reducersPath' property to tell RTK Query where to store that state in the Redux store.
+
+The name of the slice is going to be the name of the API, e.g.:
+albums, photos etc.
+
+4. The API needs to know how and where to send requests. We use 'baseQuery' property.
+
+We don't need axios library anymore.
+We are going to use fetch() function - BUILT INTO the browser.
+
+Error handling by fetch is a little bit awkward, so we need to handle JSON errors manually. Thankfully for us, RTK Query is going to handle this for us. Only what we need to do is to make some configuration using
+fetchBaseQuery() function.
+
+const albumsApi = createApi({
+reducerPath: 'albums',
+baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3005' }),
+});
+
+5.  The goal of this 'endpoints' configureation is to tell RTK Query how to make each kind of the request.
+
+- what is the goal? (fetch, add, delete)
+- give the simplified name to the request (fetchAlbums, addAlbum, deleteAlbum)
+- is this a query or a mutation? (query, mutation, mutation)
+- what is the path for this request? (/albums, /albums, /albums/:id)
+- what is the query string for this request? (?userId=1, -, -)
+- what is the method for this request? (GET, POST, DELETE)
+- what is the body for this request? (-, {title, userId}, -)
