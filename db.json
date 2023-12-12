@@ -17,6 +17,12 @@
       "id": 39
     }
   ],
-  "albums": [],
+  "albums": [
+    {
+      "id": 10,
+      "title": "Tatry jesieniom",
+      "userId": 35
+    }
+  ],
   "photos": []
 }
