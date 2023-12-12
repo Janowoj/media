@@ -652,8 +652,12 @@ Albums List
 3. The API needs to store a ton of state related to data, request status, errors. Add a 'reducerPath' property to the API object to tell RTK Query where to store that state in the Redux store
 4. The API needs to know how and where to send requests. Add a 'baseQuery' property.
 5. Add 'endpoints' one of each kind of request you want to make. Reqs that read data are called 'queries'. Reqs that create, update or delete data are called 'mutations'.
+6. Export all of the automatically generated hooks.
+7. Connect the API to the store. Reducer, middleware and listeners.
+8. Export the hooks from the sore/index.js file.
+9. Use the hooks inside of the components.
 
-6. Identify a group of related requests that your app needs to make requests ralated to users: UsersAPI
+10. Identify a group of related requests that your app needs to make requests ralated to users: UsersAPI
 
 - fetchUsers
 - addUser
@@ -708,3 +712,21 @@ baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3005' }),
 - what is the query string for this request? (?userId=1, -, -)
 - what is the method for this request? (GET, POST, DELETE)
 - what is the body for this request? (-, {title, userId}, -)
+
+6.  export const {
+    useFetchAlbumsQuery,
+    useAddAlbumMutation,
+    useDeleteAlbumMutation,
+    } = albumsApi;
+    export {albumsApi};
+
+7.  We don,t need combineReducers() function anymore, with RTK Query we will use couple different connction points. Inside reducer as a trick instead of 'albums' we can use [albumsApi.reducerPath]property.
+
+8.  This is not required, but it is a good practice to export all of the hooks from the store/index.js file.
+    export {useFetchAlbumsQuery} from './apis/albumsApi';
+
+9.  We are going to use the hooks inside of the components. This component is AlbumsList.js.
+
+const {data, isLoading, error} = useFetchAlbumsQuery(user.id);
+
+We don't need to use useEffect hook anymore.
