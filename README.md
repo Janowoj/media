@@ -730,3 +730,21 @@ baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3005' }),
 const {data, isLoading, error} = useFetchAlbumsQuery(user.id);
 
 We don't need to use useEffect hook anymore.
+Yet sometimes we may want to refetch the data after that initial render of the component.
+
+To check what does the useFetchAlbumsQuery() hook return we can console.log(data) and we can see that it is an object with a property called data.
+There are a couple console.log() with data in the console, but our ACTUAL NETWORK REQUEST is only executed ONCE.
+
+Taking a look at the last console log we will notice, thaat there is data. error, refetch, isFetching and isLoading.
+
+# Difference between isFetching and isLoading
+
+isLoading - is going to be true if we are fetching our data forthe very first time only.
+
+isFetching - is going to be true whenever we are making a request to the API server.
+
+# Rendering the list of albums
+
+// We are going to use the data, error and isLoading properties to render the list of albums.
+
+// We are going to use the Skeleton, ExpandablePanel and Button components to show the loading indicator.

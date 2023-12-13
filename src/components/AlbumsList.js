@@ -7,7 +7,7 @@ import { albumsApi } from '../store/apis/albumsApi';
 function AlbumsList({ user }) {
     const {data, error, isLoading} = useFetchAlbumsQuery(user);
     
-   let content ;
+   let content;
    if(isLoading) {
     content = <Skeleton times={3}/>;
    } else if(error) {
@@ -15,8 +15,8 @@ function AlbumsList({ user }) {
    } else {
     content = data.map(album  => {
         const header =<div>{album.title}</div> 
-        return <ExpandablePanel key={albumsApi.id} header={header}>
-            List of photos and slbum
+        return <ExpandablePanel key={album.id} header={header}>
+            List of photos in the album
         </ExpandablePanel>
     })
    }
