@@ -2,11 +2,12 @@ import {useFetchAlbumsQuery, useAddAlbumMutation} from '../store';
 import Skeleton from './Skeleton';
 import ExpandablePanel from './ExpandablePanel';
 import Button from './Button';
-import { albumsApi } from '../store/apis/albumsApi';
+// import { albumsApi } from '../store/apis/albumsApi';
 
 function AlbumsList({ user }) {
     const {data, error, isLoading} = useFetchAlbumsQuery(user);
     const [addAlbum, results] = useAddAlbumMutation();
+    console.log(results);
 
     const handleAddAlbum = () => {
         addAlbum(user);

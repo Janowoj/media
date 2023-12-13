@@ -748,3 +748,51 @@ isFetching - is going to be true whenever we are making a request to the API ser
 // We are going to use the data, error and isLoading properties to render the list of albums.
 
 // We are going to use the Skeleton, ExpandablePanel and Button components to show the loading indicator.
+
+// We are going to declare a variable called content again to render:
+Skeleton, if isLoading is set to true,
+error message, if error is set to true,
+ExpandablePanel, if there error and isLoading are set to false.
+
+// We are going to use the data property to render the list of albums.
+
+# Adding a button to add a new album
+
+// By clicking a button we are going to make a POST request to the API server to create a new album, so we are going to use the useAddAlbumMutation() hook.
+
+// The body of the request is going to be an object with a title property and a userId property.
+
+1. Do we create brand new query module?
+   No, we are going to use the existing one.
+   We are going to add the second endpoint to the existing query module.
+
+// importing fake library to generate random data
+
+2. - 5. Adding the second endpoint to the existing query module
+
+addAlbums: builder.mutation({
+query: (user) => {
+return {
+url: '/albums',
+method: 'POST',
+body: {
+userId: user.id,
+title: faker.commerce.productName()
+}
+}
+}
+}),
+
+6. - 7. Exporting the automatically generated hooks
+
+7. - 9. Export hook from the store/index.js file and use it inside of the components.
+
+# Differences between useAddAlbumMutation() and useFetchAlbumsQuery()
+
+const {data, isLoading, error} = useFetchAlbumsQuery(user);
+
+// Queries run immadiately when the component is rendered on the screen (by default).
+
+const [addAlbum, results] = useAddAlbumMutation();
+
+// Mutations give you a function tu run when you want to change some data.
