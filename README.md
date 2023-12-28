@@ -806,4 +806,36 @@ Now we have a prolblem that newly created album is not displayed on the screen.
 Options for handling updated data:
 
 1. Take the newly-created album from the resplnse and add it to the list of albums in the Redux store.
+
+## upside:
+
+- only one request to the API server
+
+## downside:
+
+- all code becomes more complex
+- response might not contain all of the data that we need
+
 2. After creating a new album, make a second request to get all albums for that user.
+
+## upside:
+
+- easier to picture data flow n the app
+- response will contain all of the data that we need
+
+## downside:
+
+- two requests to the API server
+
+# Automatic data refetching using 'tag' system
+
+RTK deduplicates requests by default. If we make the same request twice, the second request is not going to be made.
+
+Why is this occuring?
+
+Inside index.js in the store folder we are going to get access into the store and print out the state object:
+
+window.store = store;
+
+After executing query by expanding user and calling another store.getState() inside queries we can see a KEY value pair.
+RTK took the name of our ENDPOINT and the ARGUMENT provided in and merged them into a single STRING.
