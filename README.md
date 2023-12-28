@@ -839,3 +839,18 @@ window.store = store;
 
 After executing query by expanding user and calling another store.getState() inside queries we can see a KEY value pair.
 RTK took the name of our ENDPOINT and the ARGUMENT provided in and merged them into a single STRING.
+
+## About tag system:
+
+// Tag system is used to mak certain QUERIES as being 'out of date' after specific MUTATIONS are run.
+
+1. Mark certain endpoint with a very simple string tag, e.g.: 'album'
+2. Whenever we run a very specific mutation we are going to find all the queries that have been made with that tag and mark them as 'out of date'.
+3. That will cause RTK Query to automatically refetch the data for us.
+
+Inside the albumsApi.js file we are going to add a tag property to the fetchAlbum endpoint:
+providesTags: ['Album'],
+
+then we are going to add a tag property to the addAlbum endpoint:
+invalidatesTags: ['Album'].
+// this means that whenever we run this mutation, we are going to find all the queries that have been made with that tag and mark them as 'out of date'.
