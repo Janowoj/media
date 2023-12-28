@@ -795,4 +795,15 @@ const {data, isLoading, error} = useFetchAlbumsQuery(user);
 
 const [addAlbum, results] = useAddAlbumMutation();
 
-// Mutations give you a function tu run when you want to change some data.
+// Mutations give you a function tu run when you want to change some data (by clicking, typingm submitting a form etc.).
+
+// results is an object with a properties like data, error, isLoading, isFetching etc.
+
+# Options for refetching data:
+
+Now we have a prolblem that newly created album is not displayed on the screen.
+
+Options for handling updated data:
+
+1. Take the newly-created album from the resplnse and add it to the list of albums in the Redux store.
+2. After creating a new album, make a second request to get all albums for that user.

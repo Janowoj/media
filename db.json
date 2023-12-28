@@ -5,20 +5,8 @@
       "id": 37
     },
     {
-      "name": "Teri Weissnat",
-      "id": 38
-    },
-    {
-      "name": "Brenda Rutherford",
-      "id": 39
-    },
-    {
-      "name": "Matt Watsica",
-      "id": 40
-    },
-    {
-      "name": "Sandra Koch",
-      "id": 41
+      "name": "Beth Renner IV",
+      "id": 43
     }
   ],
   "albums": [
@@ -46,6 +34,16 @@
       "userId": 37,
       "title": "Rustic Rubber Salad",
       "id": 5
+    },
+    {
+      "userId": 43,
+      "title": "Elegant Fresh Salad",
+      "id": 6
+    },
+    {
+      "userId": 43,
+      "title": "Oriental Granite Shirt",
+      "id": 7
     }
   ],
   "photos": []
