@@ -11,16 +11,6 @@
   ],
   "albums": [
     {
-      "userId": 37,
-      "title": "Small Concrete Tuna",
-      "id": 4
-    },
-    {
-      "userId": 37,
-      "title": "Rustic Rubber Salad",
-      "id": 5
-    },
-    {
       "userId": 43,
       "title": "Elegant Fresh Salad",
       "id": 6
@@ -29,11 +19,6 @@
       "userId": 43,
       "title": "Oriental Granite Shirt",
       "id": 7
-    },
-    {
-      "userId": 37,
-      "title": "Unbranded Granite Gloves",
-      "id": 8
     },
     {
       "userId": 37,
@@ -94,6 +79,16 @@
       "userId": 43,
       "title": "Handcrafted Metal Soap",
       "id": 20
+    },
+    {
+      "userId": 37,
+      "title": "Unbranded Plastic Shoes",
+      "id": 21
+    },
+    {
+      "userId": 37,
+      "title": "Fantastic Soft Towels",
+      "id": 22
     }
   ],
   "photos": []
