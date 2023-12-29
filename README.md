@@ -854,3 +854,13 @@ providesTags: ['Album'],
 then we are going to add a tag property to the addAlbum endpoint:
 invalidatesTags: ['Album'].
 // this means that whenever we run this mutation, we are going to find all the queries that have been made with that tag and mark them as 'out of date'.
+
+# Fine-grained tag validation
+
+Tags can be a string or an object with an id/type.
+
+# Adding fetchFn to the baseQuery
+
+fetchFn is a function that is going to be called whenever we want override the default behavior of the fetch() function.
+
+We used fetchFn to add a delay to the request (pause).
