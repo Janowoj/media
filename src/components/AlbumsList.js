@@ -8,7 +8,7 @@ function AlbumsList({ user }) {
     const {data, error, isLoading} = useFetchAlbumsQuery(user);
     // useFetchAlbumsQuery(user);
     const [addAlbum, results] = useAddAlbumMutation();
-    console.log(results);
+    // console.log(results);
 
     const handleAddAlbum = () => {
         addAlbum(user);
@@ -29,9 +29,9 @@ function AlbumsList({ user }) {
    }
     
     return <div>
-        <div>
-        Albums created by {user.name}
-        <Button onClick={handleAddAlbum}>
+        <div className='m-2 flex flex-row items-center justify-between'>
+        <h3 className='text-lg font-bold'>Albums created by {user.name}</h3>
+        <Button loading={results.isLoading} onClick={handleAddAlbum}>
             + Add Album
         </Button>
         </div>
