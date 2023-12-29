@@ -864,3 +864,9 @@ Tags can be a string or an object with an id/type.
 fetchFn is a function that is going to be called whenever we want override the default behavior of the fetch() function.
 
 We used fetchFn to add a delay to the request (pause).
+
+# Removing an album
+
+// By clicking on the delete button we are going to make a DELETE request to the API server to delete an album.
+
+// We are going to use the useRemoveAlbumMutation() hook to handle this. It is created automatically by RTK Query.

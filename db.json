@@ -12,21 +12,6 @@
   "albums": [
     {
       "userId": 37,
-      "title": "Oriental Soft Bacon",
-      "id": 1
-    },
-    {
-      "userId": 37,
-      "title": "Oriental Fresh Tuna",
-      "id": 2
-    },
-    {
-      "userId": 37,
-      "title": "Gorgeous Wooden Fish",
-      "id": 3
-    },
-    {
-      "userId": 37,
       "title": "Small Concrete Tuna",
       "id": 4
     },
