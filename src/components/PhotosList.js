@@ -1,5 +1,9 @@
+import { useFetchPhotosQuery } from "../store";
+
 function PhotosList ({album}) {
-    return 'PotosList';
+    useFetchPhotosQuery(album);
+
+    return 'PhotosList';
 };
 
 export default PhotosList;
