@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker';
 const photosApi = createApi({
     reducerPath: 'photos',
     baseQuery: fetchBaseQuery ({
-        baseUrl: 'https://localhost:3005',
+        baseUrl: 'http://localhost:3005',
     }),
     endpoints(builder) {
         return {
@@ -26,7 +26,7 @@ const photosApi = createApi({
                         method: 'POST',
                         body: {
                             albumId: album.id,
-                            url: faker.image.urlPicsumPhotos({width: 300, height: 300}),
+                            url: faker.image.urlLoremFlickr(),
                         },
                     };
                 },

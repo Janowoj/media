@@ -39,7 +39,38 @@
       "userId": 37,
       "title": "Bespoke Frozen Computer",
       "id": 23
+    },
+    {
+      "userId": 37,
+      "title": "Gorgeous Steel Car",
+      "id": 24
     }
   ],
-  "photos": []
+  "photos": [
+    {
+      "albumId": 22,
+      "url": "https://loremflickr.com/640/480?lock=7572631471521792",
+      "id": 1
+    },
+    {
+      "albumId": 6,
+      "url": "https://loremflickr.com/640/480?lock=411658870587392",
+      "id": 2
+    },
+    {
+      "albumId": 6,
+      "url": "https://loremflickr.com/640/480?lock=8062045473734656",
+      "id": 3
+    },
+    {
+      "albumId": 6,
+      "url": "https://loremflickr.com/640/480?lock=5449273183305728",
+      "id": 4
+    },
+    {
+      "albumId": 6,
+      "url": "https://loremflickr.com/640/480?lock=2287340735168512",
+      "id": 5
+    }
+  ]
 }

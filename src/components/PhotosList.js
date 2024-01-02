@@ -13,7 +13,7 @@ function PhotosList ({album}) {
 
     let content;
     if (isFetching) {
-        content = <Skeleton className='h-10 w-full' times={3} />;
+        content = <Skeleton className='h-10 w-4' times={3} />;
     } else if (error) {
         content = <div>Error fetching photos...</div>;
     } else {
