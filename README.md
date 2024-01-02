@@ -870,3 +870,59 @@ We used fetchFn to add a delay to the request (pause).
 // By clicking on the delete button we are going to make a DELETE request to the API server to delete an album.
 
 // We are going to use the useRemoveAlbumMutation() hook to handle this. It is created automatically by RTK Query.
+
+// We are going to use the useFetchAlbumsQuery() hook to refetch the list of albums after deleting an album (automatic data refetching using tag system).
+
+// Luckily we have userId property in the album object, so we can use it to refetch the list of albums (tag invalidation object created).
+But what if we don't have it?
+
+# creating photos list
+
+// We are going to create a new component called PhotosList.js and PhotosListItem.js.
+
+// We are going to use the PhotosList component to display the list of photos.
+
+// We are going to use the PhotosListItem component to display one individual photo.
+
+// We are going to use the useFetchPhotosQuery() hook to fetch the list of photos from the API server.
+
+// e are going to create three endpoints inside of the photosApi.js file:
+
+1. fetchPhotos
+2. addPhoto
+3. deletePhoto
+
+// Inside these three different objects we are going to add in query function to customize a request to the API server, which RTK Query is going to use to make the request for us.
+
+// We are going to connect the photosApi to the store - reducers and middleware (listeners are not required, set up once).
+
+// We are going to export the useFetchPhotosQuery, useAddPhotoMutation and useDeletePhotoMutation hooks from the store/index.js file.
+
+# Creating a new photo
+
+// By clicking on the button we are going to make a POST request to the API server to create a new photo.
+
+// We are going to use the useAddPhotoMutation() hook to handle this.
+
+# Using TAGS ti refetch photos
+
+// For each PhotosListItem component we are going to use the useFetchPhotosQuery() hook to refetch the list of photos after creating a new photo, e.g.:
+
+useFetchPhotosQuery({id: 10, title: 'Jaki będzie ten rok?'});
+
+// This query is going off to the API server and fetching the list of photos for that album, e.g.:
+
+photos for Album 10:
+[{id: 1, url: 'https://via.placeholder.com/600/92c952', albumId: 10},
+{id: 2, url: 'https://via.placeholder.com/600/771796', albumId: 10},
+{id: 3, url: 'https://via.placeholder.com/600/24f355', albumId: 10}]
+
+// We have to somehow tell RTK Query that we want to refetch the list of photos for Album 10 after creating a new photo or deleting a photo.
+
+// We have to map over the list of photos and for each photo we have to use the useFetchPhotosQuery() hook to refetch the list of photos for that album.
+
+tags:
+{type: 'Photos', id: 10},
+{type: 'Photos', id: 11},
+{type: 'Photos', id: 12},
+{type: 'AlbumsPhotos', id: album.id/10},

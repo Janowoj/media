@@ -33,7 +33,9 @@ const albumsApi = createApi({
         }
       }),
       addAlbum: builder.mutation({
-        invalidatesTags: (result, error, user) => [{ type: 'UsersAlbums', id: user.id }],
+        invalidatesTags: (result, error, user) => {
+          return [{ type: 'UsersAlbums', id: user.id }]
+        },
         query: (user) => {
           return {
             url: '/albums',
